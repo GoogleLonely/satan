@@ -63,8 +63,8 @@ void *zeromq_create_socket (zctx_t *context, const char *endpoint, int type,
   }
 
   // Allow for exponential backoff: up to 5 minutes and 1s minimum
-  zsocket_set_reconnect_ivl(socket, 1 * 1000);
-  zsocket_set_reconnect_ivl_max(socket, 5 * 60 * 1000);
+  zsocket_set_reconnect_ivl(socket, 1 * 500);
+  zsocket_set_reconnect_ivl_max(socket, 2 * 500);
 
   if (type == ZMQ_SUB)
     zsocket_set_subscribe (socket, (char*)(topic == NULL ? "" : topic));
